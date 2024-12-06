@@ -23,3 +23,10 @@ The sample consists of a legacy device driver that contains intentionally incorr
 ## Run the sample
 
 To run this sample, enable KASAN in your system, load the `kasantrigger.sys` driver, and then run the `kasanagent.exe` application.
+
+**How to load the WDM driver into memory?**
+	1. Copy kasantrigger.sys into  \Systemroot\system32\drivers\
+	2. Run the following command from elevated cmd prompt 
+	sc.exe create kasantrigger type= kernel start= demand error= normal binPath= \Systemroot\system32\drivers\kasantrigger.sys DisplayName= "KasanTestDriver"
+	sc start kasantrigger
+
